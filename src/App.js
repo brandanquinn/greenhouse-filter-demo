@@ -32,7 +32,9 @@ class App extends React.Component {
   }
 
   filterParent = () => {
-    return this.state.locations.filter(office => office.location.name.includes(this.state.regionFilter) && office.children.some(child => child.location.name.includes(this.state.cityFilter)));
+    return this.state.locations.filter(
+      office => office.location.name.includes(this.state.regionFilter) && 
+      office.children.some(child => child.location.name.includes(this.state.cityFilter)));
   }
 
   generateOfficeList = () => {
