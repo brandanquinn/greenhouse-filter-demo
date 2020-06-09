@@ -41,6 +41,8 @@ class App extends React.Component {
     return this.filterParent().map(office => office.children.map(child => {
       if (child.location.name.includes(this.state.cityFilter)) {
         return `<li>${child.name}</li>`;
+      }  else {
+        return ``;
       }
     }).join('')).join('');
   }
@@ -48,11 +50,15 @@ class App extends React.Component {
   render() {
     return (
     <div>
-      <label>Region:</label>
-      <input onChange={event => this.setRegionFilter(event)} type="text" value={this.state.regionFilter}></input>
-      <label>Location:</label>
-      <input onChange={event => this.setCityFilter(event)} type="text" value={this.state.cityFilter}></input>
+      <div className="filters">
+        <label>Region:</label>
+        <input className="filter-input" onChange={event => this.setRegionFilter(event)} type="text" value={this.state.regionFilter}></input>
+        <label>Location:</label>
+        <input onChange={event => this.setCityFilter(event)} type="text" value={this.state.cityFilter}></input>
+      </div>
+      <ul>
       {parse(this.generateOfficeList() || `<h3>No locations found.</h3>`)}
+      </ul>
     </div>
     )
   }
